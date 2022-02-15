@@ -3,12 +3,12 @@
 class Customer {
   public:
     void DepositMoney(float money) {
-      balance += money;
+      bank_balance += money;
       on_hand_balance -= money;
     }
-    void GetBalance() {std::cout << balance << std::endl;}
+    void GetBalance() {std::cout << bank_balance << std::endl;}
     void WithdrawMoney(float money) {
-      balance -= money;
+      bank_balance -= money;
       on_hand_balance += money;
     }
   private:
