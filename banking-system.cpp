@@ -16,10 +16,26 @@ class Customer {
 };
 
 int main() {
+  unsigned int service_num;
+
   std::cout << "Welcome to Earth Bank!" << std::endl << std::endl;
-  std::cout << "Enter the one of the following numbers to be serviced:" std::endl;
+  std::cout << "Enter the one of the following numbers to be serviced:" << std::endl;
   std::cout << "(1) Balance" << std::endl;
-  std::cout << "(0) Exit" std::endl;
+  std::cout << "(0) Exit" << std::endl;
+  std::cout << "Your Entry: ";
+
+  std::cin >> service_num;
+
+  switch (service_num) {
+    case 0:
+      break;
+    case 1:
+      std::cout << "Balance" << std::endl;
+      break;
+    default:
+      std::cout << "Not a valid service number" << std::endl;
+      break;
+  }
 
   return 0;
 }
