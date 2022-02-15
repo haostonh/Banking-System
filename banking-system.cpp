@@ -16,5 +16,10 @@ class Customer {
 };
 
 int main() {
- return 0;
+  std::cout << "Welcome to Earth Bank!" << std::endl << std::endl;
+  std::cout << "Enter the one of the following numbers to be serviced:" std::endl;
+  std::cout << "(1) Balance" << std::endl;
+  std::cout << "(0) Exit" std::endl;
+
+  return 0;
 }
