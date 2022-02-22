@@ -15,6 +15,10 @@ class Customer {
     float bank_balance, on_hand_balance;
 };
 
+void BalanceOptions() {
+
+}
+
 int main() {
   unsigned int service_num;
 
@@ -31,6 +35,7 @@ int main() {
       break;
     case 1:
       std::cout << "Balance" << std::endl;
+      BalanceOptions();
       break;
     default:
       std::cout << "Not a valid service number" << std::endl;
