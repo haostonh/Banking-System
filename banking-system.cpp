@@ -16,12 +16,16 @@ class Customer {
     float bank_balance, on_hand_balance;
 };
 
-void BalanceOptions() {
-
+void BalanceOptions(Customer* person) {
+  person->GetBalance();
 }
 
 int main() {
   unsigned int service_num;
+
+  // Temporary creation of class until connecting db
+  Customer* John = new Customer();
+  John->DepositMoney(118);
 
   std::cout << "Welcome to Earth Bank!" << std::endl << std::endl;
   std::cout << "Enter the one of the following numbers to be serviced:" << std::endl;
@@ -36,7 +40,7 @@ int main() {
       break;
     case 1:
       std::cout << "Balance" << std::endl;
-      BalanceOptions();
+      BalanceOptions(John);
       break;
     default:
       std::cout << "Not a valid service number" << std::endl;
