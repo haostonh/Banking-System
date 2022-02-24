@@ -18,13 +18,29 @@ class Customer {
 };
 
 void BalanceOptions(Customer* person) {
+  unsigned int balance_option_num;
+  bool isValidNum = false;
+
   std::cout << "Enter one of the numbers to get help on balance: " << std::endl;
   std::cout << "(1) Get Bank Balance" << std::endl;
   std::cout << "(2) Withdraw Out Bank Balance" << std::endl;
   std::cout << "(3) Deposit Into Bank Balance" << std::endl;
   std::cout << "(0) Exit" << std::endl;
 
-  
+  while(!isValidNum) {
+    std::getline(std::cin, balance_option_num);
+    
+    if (std::cin.fail()) {
+      std::cin.clear();
+      std::cin.str("");
+      continue;
+    } else {
+      isValidNum = true;
+      break;
+    }
+  }
+
+
 }
 
 int main() {
