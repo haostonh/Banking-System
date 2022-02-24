@@ -18,13 +18,13 @@ class Customer {
 };
 
 void BalanceOptions(Customer* person) {
-  std::cout << "Enter one of the numbers to get help on balance: " std::endl;
+  std::cout << "Enter one of the numbers to get help on balance: " << std::endl;
   std::cout << "(1) Get Bank Balance" << std::endl;
   std::cout << "(2) Withdraw Out Bank Balance" << std::endl;
   std::cout << "(3) Deposit Into Bank Balance" << std::endl;
   std::cout << "(0) Exit" << std::endl;
 
-
+  
 }
 
 int main() {
