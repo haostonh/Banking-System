@@ -78,7 +78,8 @@ int main() {
 
   // Temporary creation of class until connecting db
   Customer* John = new Customer();
-  John->DepositMoney(118);
+  John->SetBankBalance(213);
+  John->SetOnHandBalance(200);
 
   std::cout << "Welcome to Earth Bank!" << std::endl << std::endl;
   std::cout << "Enter the one of the following numbers to be serviced:" << std::endl;
