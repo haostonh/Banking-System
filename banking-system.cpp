@@ -47,7 +47,9 @@ void BalanceOptions(Customer* person) {
     }
   }
 
+  switch(bal_option_num) {
 
+  }
 }
 
 int main() {
@@ -82,6 +84,8 @@ int main() {
       break;
     }
   }
+
+  std::cout << std::endl;
 
   switch (service_num) {
     case 0:
