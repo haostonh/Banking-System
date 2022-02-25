@@ -18,7 +18,9 @@ class Customer {
 };
 
 void BalanceOptions(Customer* person) {
-  unsigned int balance_option_num;
+  unsigned int bal_option_num;
+  std::string str_bal_option_num;
+  std::stringstream ss_bal_option_num;
   bool isValidNum = false;
 
   std::cout << "Enter one of the numbers to get help on balance: " << std::endl;
@@ -28,11 +30,16 @@ void BalanceOptions(Customer* person) {
   std::cout << "(0) Exit" << std::endl;
 
   while(!isValidNum) {
-    std::getline(std::cin, balance_option_num);
+    std::cout << "Your Entry: ";
+    std::getline(std::cin, str_bal_option_num);
     
-    if (std::cin.fail()) {
-      std::cin.clear();
-      std::cin.str("");
+    ss_bal_option_num << str_bal_option_num;
+    ss_bal_option_num >> bal_option_num;
+
+    if (ss_bal_option_num.fail()) {
+      ss_bal_option_num.clear();
+      ss_bal_option_num.str("");
+      std::cout << "Try Again" << std::endl;
       continue;
     } else {
       isValidNum = true;
@@ -45,6 +52,9 @@ void BalanceOptions(Customer* person) {
 
 int main() {
   unsigned int service_num;
+  std::string str_service_num;
+  std::stringstream ss_service_num;
+  bool isValidNum = false;
 
   // Temporary creation of class until connecting db
   Customer* John = new Customer();
@@ -54,9 +64,24 @@ int main() {
   std::cout << "Enter the one of the following numbers to be serviced:" << std::endl;
   std::cout << "(1) Balance" << std::endl;
   std::cout << "(0) Exit" << std::endl;
-  std::cout << "Your Entry: ";
 
-  std::cin >> service_num;
+  while(!isValidNum) {
+    std::cout << "Your Entry: ";
+    std::getline(std::cin, str_service_num);
+    
+    ss_service_num << str_service_num;
+    ss_service_num >> service_num;
+
+    if (ss_service_num.fail()) {
+      ss_service_num.clear();
+      ss_service_num.str("");
+      std::cout << "Try Again" << std::endl;
+      continue;
+    } else {
+      isValidNum = true;
+      break;
+    }
+  }
 
   switch (service_num) {
     case 0:
