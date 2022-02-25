@@ -9,6 +9,12 @@ class Customer {
       on_hand_balance -= money;
     }
     void GetBalance() {std::cout << "Your Bank Balance: " << bank_balance << std::endl;}
+    void SetBankBalance(float money) {
+      bank_balance = money;
+    } 
+    void SetOnHandBalance(float money) {
+     on_hand_balance = money;
+    }
     void WithdrawMoney(float money) {
       bank_balance -= money;
       on_hand_balance += money;
