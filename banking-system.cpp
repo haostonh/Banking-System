@@ -8,7 +8,7 @@ class Customer {
       bank_balance += money;
       on_hand_balance -= money;
     }
-    void GetBalance() {std::cout << bank_balance << std::endl;}
+    void GetBalance() {std::cout << "Your Bank Balance: " << bank_balance << std::endl;}
     void WithdrawMoney(float money) {
       bank_balance -= money;
       on_hand_balance += money;
@@ -48,7 +48,19 @@ void BalanceOptions(Customer* person) {
   }
 
   switch(bal_option_num) {
-
+    case 0:
+      std::cout << "Goodbye" << std::endl;
+      break;
+    case 1:
+      person->GetBalance();
+      break;
+    case 2:
+      break;
+    case 3:
+      break;
+    default:
+      std::cout << "Not a Valid Option" << std::endl;
+      break;
   }
 }
 
@@ -89,6 +101,7 @@ int main() {
 
   switch (service_num) {
     case 0:
+      std::cout << "Goodbye" << std::endl;
       break;
     case 1:
       std::cout << "Balance" << std::endl;
