@@ -5,6 +5,7 @@
 #include<vector>
 
 int CheckNumberInput(std::vector valid_nums) {
+  bool is_valid_num = false;
   int input_num;
   std::string str_input_num;
   std::stringstream ss_input_num;
@@ -24,8 +25,13 @@ int CheckNumberInput(std::vector valid_nums) {
       ss_input_num.str("");
     }
 
-  } while (std::find(valid_nums.begin(), valid_nums.end(), input_num) == valid_nums.end());
+    if (std::find(valid_nums.begin(), valid_nums.end(), input_num) != valid_nums.end()) {
+      is_valid_num = 1;
+    } else {
+      std::cout << "Invalid Number, Try Again" << std::endl;
+      continue;
+    }
+  } while (!is_valid_num);
 
-
-
+  return input_num;
 }
