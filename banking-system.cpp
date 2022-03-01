@@ -75,9 +75,6 @@ void BalanceOptions(Customer* person) {
 
 int main() {
   unsigned int service_num;
-  std::string str_service_num;
-  std::stringstream ss_service_num;
-  bool isValidNum = false;
 
   // Temporary creation of class until connecting db
   Customer* John = new Customer();
