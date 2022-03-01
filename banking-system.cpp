@@ -28,9 +28,6 @@ class Customer {
 
 void BalanceOptions(Customer* person) {
   unsigned int bal_option_num;
-  std::string str_bal_option_num;
-  std::stringstream ss_bal_option_num;
-  bool isValidNum = false;
 
   std::cout << "Enter one of the numbers to get help on balance: " << std::endl;
   std::cout << "(1) Get Bank Balance" << std::endl;
@@ -38,23 +35,8 @@ void BalanceOptions(Customer* person) {
   std::cout << "(3) Deposit Into Bank Balance" << std::endl;
   std::cout << "(0) Exit" << std::endl;
 
-  while(!isValidNum) {
-    std::cout << "Your Entry: ";
-    std::getline(std::cin, str_bal_option_num);
-    
-    ss_bal_option_num << str_bal_option_num;
-    ss_bal_option_num >> bal_option_num;
-
-    if (ss_bal_option_num.fail()) {
-      ss_bal_option_num.clear();
-      ss_bal_option_num.str("");
-      std::cout << "Try Again" << std::endl;
-      continue;
-    } else {
-      isValidNum = true;
-      break;
-    }
-  }
+  std::vector<int> valid_bal_nums = {0, 1, 2, 3};
+  bal_option_num = CheckNumberInput(valid_bal_nums);
 
   switch(bal_option_num) {
     case 0:
