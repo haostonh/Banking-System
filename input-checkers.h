@@ -11,6 +11,7 @@ int CheckNumberInput(std::vector valid_nums) {
   std::stringstream ss_input_num;
 
   do {
+    std::cout << "Your Entry: ";
     std::getline(std::cin, str_input_num);
     ss_input_num << str_input_num;
     ss_input_num >> input_num;
