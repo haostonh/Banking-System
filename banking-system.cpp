@@ -89,23 +89,8 @@ int main() {
   std::cout << "(1) Balance" << std::endl;
   std::cout << "(0) Exit" << std::endl;
 
-  while(!isValidNum) {
-    std::cout << "Your Entry: ";
-    std::getline(std::cin, str_service_num);
-    
-    ss_service_num << str_service_num;
-    ss_service_num >> service_num;
-
-    if (ss_service_num.fail()) {
-      ss_service_num.clear();
-      ss_service_num.str("");
-      std::cout << "Try Again" << std::endl;
-      continue;
-    } else {
-      isValidNum = true;
-      break;
-    }
-  }
+  std::vector<int> valid_service_nums = {0, 1};
+  service_num = CheckNumberInput(valid_service_nums);
 
   std::cout << std::endl;
 
