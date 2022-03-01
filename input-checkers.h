@@ -4,7 +4,7 @@
 #include<string>
 #include<vector>
 
-int CheckNumberInput(std::vector valid_nums) {
+int CheckNumberInput(std::vector<int> valid_nums) {
   bool is_valid_num = false;
   int input_num;
   std::string str_input_num;
