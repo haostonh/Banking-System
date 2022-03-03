@@ -5,6 +5,11 @@
       "taskLabel": "task-banking-system",
       "appliesTo": "banking-system.cpp",
       "type": "launch"
+    },
+    {
+      "taskLabel": "task-Banking-System",
+      "appliesTo": "/",
+      "type": "launch"
     }
   ]
 }
