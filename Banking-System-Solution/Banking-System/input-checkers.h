@@ -14,7 +14,6 @@ float CheckForValidAmount(std::string action) {
         std::cout << "Enter amount to " << action << ": ";
         std::getline(std::cin, str_input_amount);
         ss_input_amount << str_input_amount;
-        ss_input_amount.precision(2);
         ss_input_amount >> input_amount;
 
         if (ss_input_amount.fail()) {
@@ -24,6 +23,7 @@ float CheckForValidAmount(std::string action) {
         } else {
             ss_input_amount.clear();
             ss_input_amount.str("");
+            is_valid_amount = true;
         }
     } while (!is_valid_amount);
 
