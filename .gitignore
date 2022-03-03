@@ -13,7 +13,7 @@
 /.vs
 
 # Ignore files inside vs folder
-/Banking-System-Solution/.vs/Banking-System-Solution/v16/ipch/AutoPCH/fb98f3f3648ba955
+/Banking-System-Solution/.vs/Banking-System-Solution/v16/
 
 # Credits to https://github.com/github/gitignore/blob/main/C%2B%2B.gitignore
 # Prerequisites
