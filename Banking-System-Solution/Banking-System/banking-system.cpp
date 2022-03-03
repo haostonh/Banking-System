@@ -86,8 +86,8 @@ void BalanceOptions(Customer* person) {
 
     std::cout << "Enter one of the numbers to get help on balance: " << std::endl;
     std::cout << "(1) Get Bank Balance" << std::endl;
-    std::cout << "(2) Deposit Out Bank Balance" << std::endl;
-    std::cout << "(3) Withdraw Into Bank Balance" << std::endl;
+    std::cout << "(2) Deposit Into Bank Balance" << std::endl;
+    std::cout << "(3) Withdraw Out Bank Balance" << std::endl;
     std::cout << "(0) Exit" << std::endl;
 
     std::vector<int> valid_bal_nums = { 0, 1, 2, 3 };
