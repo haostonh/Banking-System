@@ -11,7 +11,7 @@ float CheckForValidAmount(std::string action) {
     std::stringstream ss_input_amount;
 
     do {
-        std::cout << "Enter amount to " << action << ": " << std::endl;
+        std::cout << "Enter amount to " << action << ": ";
         std::getline(std::cin, str_input_amount);
         ss_input_amount << str_input_amount;
         ss_input_amount.precision(2);
