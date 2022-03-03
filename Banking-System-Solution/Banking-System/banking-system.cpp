@@ -64,7 +64,7 @@ void WithdrawFromBankBalance(Customer* person) {
         withdraw_amount = CheckForValidAmount("Withdraw");
 
         if (withdraw_amount < person->GetBankBalance()) {
-            std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
+            std::cout << "Cannot Withdraw Amount Specified, Try Again" << std::endl;
             continue;
         }
         else if (withdraw_amount < 0) {
