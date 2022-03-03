@@ -63,7 +63,7 @@ void WithdrawFromBankBalance(Customer* person) {
     while (!is_valid_withdrawal) {
         withdraw_amount = CheckForValidAmount("Withdraw");
 
-        if (withdraw_amount < person->GetBankBalance()) {
+        if (withdraw_amount > person->GetBankBalance()) {
             std::cout << "Cannot Withdraw Amount Specified, Try Again" << std::endl;
             continue;
         }
