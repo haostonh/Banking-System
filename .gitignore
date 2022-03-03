@@ -1,5 +1,8 @@
 # Ignore Database Extension
 *.opendb
+*.VC.db
+*.VC.db-shm
+*.VC.db-wal
 
 # Ignore Debug and Release Builds
 /Banking-System-Solution/Banking-System/Debug
@@ -11,6 +14,3 @@
 
 # Ignore files inside vs folder
 /Banking-System-Solution/.vs/Banking-System-Solution/v16/ipch/AutoPCH/fb98f3f3648ba955
-/Banking-System-Solution/.vs/Banking-System-Solution/v16/Browse.VC.db
-/Banking-System-Solution/.vs/Banking-System-Solution/v16/Browse.VC.db-shm
-/Banking-System-Solution/.vs/Banking-System-Solution/v16/Browse.VC.db-wal
