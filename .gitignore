@@ -2,7 +2,7 @@
 *.suo
 
 # Ignore .vs folders
-/.vs
+.vs/
 
 # Ignore Database Extension
 *.opendb
