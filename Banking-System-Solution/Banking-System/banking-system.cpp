@@ -31,6 +31,56 @@ private:
     float bank_balance, on_hand_balance;
 };
 
+void DepositFromBankBalance(Customer* person) {
+    bool is_valid_deposit = false;
+    float deposit_amount = 0;
+
+    while (!is_valid_deposit) {
+        deposit_amount = CheckForValidAmount("Deposit");
+
+        if (deposit_amount > person->GetOnHandBalance()) {
+            std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
+            continue;
+        }
+        else if (deposit_amount < 0) {
+            std::cout << "Cannot Deposit a Negative Amount, Try Again" << std::endl;
+            continue;
+        }
+        else {
+            person->DepositMoney(deposit_amount);
+            std::cout << "Money Deposited Successfully!" << std::endl;
+            person->GetOnHandBalancePrompt();
+            person->GetBankBalancePrompt();
+            is_valid_deposit = true;
+        }
+    }
+}
+
+void WithdrawFromBankBalance(Customer* person) {
+    bool is_valid_withdrawal = false;
+    float withdraw_amount = 0;
+
+    while (!is_valid_withdrawal) {
+        withdraw_amount = CheckForValidAmount("Withdraw");
+
+        if (withdraw_amount < person->GetBankBalance()) {
+            std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
+            continue;
+        }
+        else if (withdraw_amount < 0) {
+            std::cout << "Cannot Withdraw a Negative Amount, Try Again" << std::endl;
+            continue;
+        }
+        else {
+            person->WithdrawMoney(withdraw_amount);
+            std::cout << "Money Withdrew Successfully!" << std::endl;
+            person->GetOnHandBalancePrompt();
+            person->GetBankBalancePrompt();
+            is_valid_withdrawal = true;
+        }
+    }
+}
+
 void BalanceOptions(Customer* person) {
     unsigned int bal_option_num;
 
@@ -59,52 +109,6 @@ void BalanceOptions(Customer* person) {
     default:
         std::cout << "Not a Valid Option" << std::endl;
         break;
-    }
-}
-
-void DepositFromBankBalance(Customer* person) {
-    bool is_valid_deposit = false;
-    float deposit_amount = 0;
-
-    while (!is_valid_deposit) {
-        deposit_amount = CheckForValidAmount("Deposit");
-
-        if (deposit_amount > person->GetOnHandBalance()) {
-            std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
-            continue;
-        } else if (deposit_amount < 0) {
-            std::cout << "Cannot Deposit a Negative Amount, Try Again" << std::endl;
-            continue;
-        } else {
-            person->DepositMoney(deposit_amount);
-            std::cout << "Money Deposited Successfully!" << std::endl;
-            person->GetOnHandBalancePrompt();
-            person->GetBankBalancePrompt();
-            is_valid_deposit = true;
-        }
-    }
-}
-
-void WithdrawFromBankBalance(Customer* person) {
-    bool is_valid_withdrawal = false;
-    float withdraw_amount = 0;
-
-    while (!is_valid_withdrawal) {
-        withdraw_amount = CheckForValidAmount("Withdraw");
-
-        if (withdraw_amount < person->GetBankBalance()) {
-            std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
-            continue;
-        } else if (withdraw_amount < 0) {
-            std::cout << "Cannot Withdraw a Negative Amount, Try Again" << std::endl;
-            continue;
-        } else {
-            person->WithdrawMoney(withdraw_amount);
-            std::cout << "Money Withdrew Successfully!" << std::endl;
-            person->GetOnHandBalancePrompt();
-            person->GetBankBalancePrompt();
-            is_valid_withdrawal = true;
-        }
     }
 }
 
