@@ -92,6 +92,19 @@ void WithdrawFromBankBalance(Customer* person) {
     while (!is_valid_withdrawal) {
         withdraw_amount = CheckForValidAmount("Withdraw");
 
+        if (withdraw_amount < person->GetBankBalance()) {
+            std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
+            continue;
+        } else if (withdraw_amount < 0) {
+            std::cout << "Cannot Withdraw a Negative Amount, Try Again" << std::endl;
+            continue;
+        } else {
+            person->WithdrawMoney(withdraw_amount);
+            std::cout << "Money Withdrew Successfully!" << std::endl;
+            person->GetOnHandBalancePrompt();
+            person->GetBankBalancePrompt();
+            is_valid_withdrawal = true;
+        }
     }
 }
 
