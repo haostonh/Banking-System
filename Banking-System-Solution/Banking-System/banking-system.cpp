@@ -59,11 +59,19 @@ void BalanceOptions(Customer* person) {
 
 void DepositFromBankBalance(Customer* person) {
     bool is_valid_deposit = false;
+    float deposit_amount = 0;
 
+    while (!is_valid_deposit) {
+
+    }
 }
 
 void WithdrawFromBankBalance(Customer* person) {
     bool is_valid_withdrawal = false;
+    float withdraw_amount = 0;
+
+    while (!is_valid_withdrawal) {
+    }
 }
 
 int main() {
