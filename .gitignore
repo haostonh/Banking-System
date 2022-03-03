@@ -1,3 +1,6 @@
+# Ignore Solution User Options (SUO)
+*.suo
+
 # Ignore .vs folders
 /.vs
 
