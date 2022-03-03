@@ -11,7 +11,7 @@ public:
         bank_balance += money;
         on_hand_balance -= money;
     }
-    void GetBalance() { std::cout << "Your Bank Balance: " << bank_balance << std::endl; }
+    void GetBankBalance() { std::cout << "Your Bank Balance: " << bank_balance << std::endl; }
     void SetBankBalance(float money) {
         bank_balance = money;
     }
@@ -31,8 +31,8 @@ void BalanceOptions(Customer* person) {
 
     std::cout << "Enter one of the numbers to get help on balance: " << std::endl;
     std::cout << "(1) Get Bank Balance" << std::endl;
-    std::cout << "(2) Withdraw Out Bank Balance" << std::endl;
-    std::cout << "(3) Deposit Into Bank Balance" << std::endl;
+    std::cout << "(2) Deposit Out Bank Balance" << std::endl;
+    std::cout << "(3) Withdraw Into Bank Balance" << std::endl;
     std::cout << "(0) Exit" << std::endl;
 
     std::vector<int> valid_bal_nums = { 0, 1, 2, 3 };
@@ -43,16 +43,27 @@ void BalanceOptions(Customer* person) {
         std::cout << "Goodbye" << std::endl;
         break;
     case 1:
-        person->GetBalance();
+        person->GetBankBalance();
         break;
     case 2:
+        DepositFromBankBalance(person);
         break;
     case 3:
+        WithdrawFromBankBalance(person);
         break;
     default:
         std::cout << "Not a Valid Option" << std::endl;
         break;
     }
+}
+
+void DepositFromBankBalance(Customer* person) {
+    bool is_valid_deposit = false;
+
+}
+
+void WithdrawFromBankBalance(Customer* person) {
+    bool is_valid_withdrawal = false;
 }
 
 int main() {
