@@ -72,12 +72,10 @@ void DepositFromBankBalance(Customer* person) {
         if (deposit_amount > person->GetOnHandBalance()) {
             std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
             continue;
-        }
-        else if (deposit_amount < 0) {
+        } else if (deposit_amount < 0) {
             std::cout << "Cannot Deposit a Negative Amount, Try Again" << std::endl;
             continue;
-        }
-        else {
+        } else {
             person->DepositMoney(deposit_amount);
             std::cout << "Money Deposited Successfully!" << std::endl;
             person->GetOnHandBalancePrompt();
