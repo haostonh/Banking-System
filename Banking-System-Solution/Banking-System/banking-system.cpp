@@ -120,6 +120,13 @@ void BalanceOptions(Customer* person) {
 int main() {
     unsigned int service_num;
 
+    /*try {
+        sql::Driver* driver = get_driver_instance();
+        con = driver->connect();
+    } catch (sql::SQLException& e) {
+        return EXIT_FAILURE;
+    }*/
+
     // Temporary creation of class until connecting db
     Customer* John = new Customer();
     John->SetBankBalance(213);
@@ -148,5 +155,5 @@ int main() {
         break;
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
