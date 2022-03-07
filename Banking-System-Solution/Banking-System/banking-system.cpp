@@ -129,11 +129,9 @@ int main(int argc, const char **argv) {
         delete con;
     } catch (sql::SQLException& e) {
         std::cout << "Could not connect to server. Error Message: " << e.what() << std::endl;
-        delete con;
         return EXIT_FAILURE;
     }
-
-    // Temporary creation of class until connecting db
+    
     Customer* John = new Customer();
     John->SetBankBalance(213);
     John->SetOnHandBalance(200);
