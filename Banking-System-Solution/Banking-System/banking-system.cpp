@@ -117,7 +117,7 @@ void BalanceOptions(Customer* person) {
     }
 }
 
-int main() {
+int main(int argc, const char **argv) {
     unsigned int service_num;
 
     /*try {
