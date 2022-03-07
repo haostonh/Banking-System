@@ -15,6 +15,9 @@
 # Ignore files inside vs folder
 /Banking-System-Solution/.vs/Banking-System-Solution/v16/
 
+# Ignore file with sensitive user information
+/Banking-System-Solution/Banking-System/Banking-System.vcxproj.user
+
 # Credits to https://github.com/github/gitignore/blob/main/C%2B%2B.gitignore
 # Prerequisites
 *.d
