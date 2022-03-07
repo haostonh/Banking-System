@@ -119,13 +119,19 @@ void BalanceOptions(Customer* person) {
 
 int main(int argc, const char **argv) {
     unsigned int service_num;
+    sql::Connection* con;
+    sql::Driver* driver;
 
-    /*try {
-        sql::Driver* driver = get_driver_instance();
-        con = driver->connect();
+    try {
+        driver = get_driver_instance();
+        con = driver->connect(argv[1], argv[2], argv[3]);
+        std::cout << "Connection Successful! " << std::endl;
+        delete con;
     } catch (sql::SQLException& e) {
+        std::cout << "Could not connect to server. Error Message: " << e.what() << std::endl;
+        delete con;
         return EXIT_FAILURE;
-    }*/
+    }
 
     // Temporary creation of class until connecting db
     Customer* John = new Customer();
