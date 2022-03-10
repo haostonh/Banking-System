@@ -17,6 +17,7 @@
 
 # Ignore file with sensitive user information
 /Banking-System-Solution/Banking-System/Banking-System.vcxproj.user
+*.vcxproj.user
 
 # Credits to https://github.com/github/gitignore/blob/main/C%2B%2B.gitignore
 # Prerequisites
