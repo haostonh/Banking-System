@@ -92,18 +92,18 @@ void WithdrawFromBankBalance(Customer* person) {
 void BalanceOptions(Customer* person) {
     unsigned int bal_option_num;
 
-    std::cout << "Enter one of the numbers to get help on balance: " << std::endl;
-    std::cout << "(1) Get Bank Balance" << std::endl;
-    std::cout << "(2) Deposit Into Bank Balance" << std::endl;
-    std::cout << "(3) Withdraw Out Bank Balance" << std::endl;
-    std::cout << "(0) Exit" << std::endl;
+    std::cout << "Enter one of the numbers to get help on balance:\n";
+    std::cout << "(1) Get Bank Balance\n";
+    std::cout << "(2) Deposit Into Bank Balance\n";
+    std::cout << "(3) Withdraw Out Bank Balance\n";
+    std::cout << "(0) Exit\n";
 
     std::vector<int> valid_bal_nums = { 0, 1, 2, 3 };
     bal_option_num = CheckNumberInput(valid_bal_nums);
 
     switch (bal_option_num) {
     case 0:
-        std::cout << "Goodbye" << std::endl;
+        std::cout << "Goodbye\n";
         break;
     case 1:
         person->GetBankBalancePrompt();
@@ -115,7 +115,7 @@ void BalanceOptions(Customer* person) {
         WithdrawFromBankBalance(person);
         break;
     default:
-        std::cout << "Not a Valid Option" << std::endl;
+        std::cout << "Not a Valid Option\n";
         break;
     }
 }
@@ -191,7 +191,7 @@ int main(int argc, const char **argv) {
     std::vector<int> valid_service_nums = { 0, 1 };
     service_num = CheckNumberInput(valid_service_nums);
 
-    std::cout << std::endl;
+    std::cout << "\n";
 
     switch (service_num) {
     case 0:
