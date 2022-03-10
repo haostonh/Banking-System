@@ -5,10 +5,13 @@
 #include<string>
 #include<vector>
 
+#include"mysql_driver.h"
 #include"mysql_connection.h"
 #include<cppconn/driver.h>
 #include<cppconn/exception.h>
+#include<cppconn/statement.h>
 #include<cppconn/prepared_statement.h>
+#include<cppconn/datatype.h>
 
 class Customer {
 public:
@@ -121,15 +124,33 @@ int main(int argc, const char **argv) {
     unsigned int service_num;
     sql::Connection* con;
     sql::Driver* driver;
+    sql::Statement* statement;
+    sql::PreparedStatement* pstatement;
+    
 
     try {
         driver = get_driver_instance();
         con = driver->connect(argv[1], argv[2], argv[3]);
         std::cout << "Connection Successful! " << std::endl;
-        delete con;
     } catch (sql::SQLException& e) {
         std::cout << "Could not connect to server. Error Message: " << e.what() << std::endl;
         return EXIT_FAILURE;
+    }
+
+    // Created schema ahead of time in MySQL Workbench
+    try {
+        con->setSchema("earth_bank");
+    } catch (sql::SQLException& e) {
+        std::cout << "Could not find schema. Error Message: " << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    statement = con->createStatement();
+    try {
+        statement->executeQuery("CREATE TABLE IF NOT EXISTS \\
+            customer_information(customer_id INT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), on_hand_balance DECIMAL(10,2), bank_balance DECIMAL(10,2));");
+    } catch (sql::SQLException& e) {
+
     }
     
     Customer* John = new Customer();
@@ -159,5 +180,7 @@ int main(int argc, const char **argv) {
         break;
     }
 
+    delete statement;
+    delete con;
     return EXIT_SUCCESS;
 }
