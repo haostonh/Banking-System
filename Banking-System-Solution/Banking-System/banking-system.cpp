@@ -125,6 +125,7 @@ int main(int argc, const char **argv) {
     sql::Connection* con;
     sql::Driver* driver;
     sql::Statement* statement;
+    sql::ResultSet* result_set;
     sql::PreparedStatement* pstatement;
     
 
@@ -153,9 +154,32 @@ int main(int argc, const char **argv) {
 
     }
     
+    try {
+        statement->executeQuery("INSERT INTO customer_information VALUES(1,'John','Smith',213.73,510.67);");
+    }
+    catch (sql::SQLException& e) {
+
+    }
+
+    float bank_balance = 0;
+    float on_hand_balance = 0;
+
+    try {
+        result_set = statement->executeQuery("SELECT on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
+    }
+    catch (sql::SQLException& e) {
+        std::cout << "Not Working";
+        return EXIT_FAILURE;
+    }
+
+    while (result_set->next()) {
+        on_hand_balance = result_set->getDouble("on_hand_balance");
+        bank_balance = result_set->getDouble("bank_balance");
+    }
+
     Customer* John = new Customer();
-    John->SetBankBalance(213);
-    John->SetOnHandBalance(200);
+    John->SetBankBalance(on_hand_balance);
+    John->SetOnHandBalance(bank_balance);
 
     std::cout << "Welcome to Earth Bank!" << std::endl << std::endl;
     std::cout << "Enter the one of the following numbers to be serviced:" << std::endl;
@@ -180,6 +204,7 @@ int main(int argc, const char **argv) {
         break;
     }
 
+    delete result_set;
     delete statement;
     delete con;
     return EXIT_SUCCESS;
