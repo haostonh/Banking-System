@@ -20,10 +20,10 @@ public:
         on_hand_balance -= money;
     }
     float GetBankBalance() { return bank_balance; }
-    void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance << std::endl; }
+    void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance << "\n"; }
     float GetOnHandBalance() { return on_hand_balance; }
     void GetOnHandBalancePrompt() {
-        std::cout << "Your On Hand Balance: " << on_hand_balance << std::endl;
+        std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
     }
     void SetBankBalance(float money) {
         bank_balance = money;
