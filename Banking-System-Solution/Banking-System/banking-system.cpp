@@ -126,7 +126,6 @@ int main(int argc, const char **argv) {
     sql::Driver* driver;
     sql::Statement* statement;
     sql::ResultSet* result_set;
-    sql::PreparedStatement* pstatement;
     
     // Make the Connection with MySQL Server
     try {
