@@ -131,9 +131,9 @@ int main(int argc, const char **argv) {
     try {
         driver = get_driver_instance();
         con = driver->connect(argv[1], argv[2], argv[3]);
-        std::cout << "Connection Successful! " << std::endl;
+        std::cout << "Connection Successful!\n" ;
     } catch (sql::SQLException& e) {
-        std::cout << "Could not connect to server. Error Message: " << e.what() << std::endl;
+        std::cout << "Could not connect to server. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
     }
 
@@ -141,7 +141,7 @@ int main(int argc, const char **argv) {
     try {
         con->setSchema("earth_bank");
     } catch (sql::SQLException& e) {
-        std::cout << "Could not find schema. Error Message: " << e.what() << std::endl;
+        std::cout << "Could not find schema. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
     }
 
@@ -183,10 +183,10 @@ int main(int argc, const char **argv) {
     John->SetBankBalance(on_hand_balance);
     John->SetOnHandBalance(bank_balance);
 
-    std::cout << "Welcome to Earth Bank!" << std::endl << std::endl;
-    std::cout << "Enter the one of the following numbers to be serviced:" << std::endl;
-    std::cout << "(1) Balance" << std::endl;
-    std::cout << "(0) Exit" << std::endl;
+    std::cout << "Welcome to Earth Bank!\n\n" ;
+    std::cout << "Enter the one of the following numbers to be serviced:\n" ;
+    std::cout << "(1) Balance\n";
+    std::cout << "(0) Exit\n";
 
     std::vector<int> valid_service_nums = { 0, 1 };
     service_num = CheckNumberInput(valid_service_nums);
@@ -195,14 +195,14 @@ int main(int argc, const char **argv) {
 
     switch (service_num) {
     case 0:
-        std::cout << "Goodbye" << std::endl;
+        std::cout << "Goodbye\n";
         break;
     case 1:
-        std::cout << "Balance" << std::endl;
+        std::cout << "Balance\n";
         BalanceOptions(John);
         break;
     default:
-        std::cout << "Not a valid service number" << std::endl;
+        std::cout << "Not a valid service number\n";
         break;
     }
 
