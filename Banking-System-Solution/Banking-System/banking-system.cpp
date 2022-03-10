@@ -128,7 +128,7 @@ int main(int argc, const char **argv) {
     sql::ResultSet* result_set;
     sql::PreparedStatement* pstatement;
     
-
+    // Make the Connection with MySQL Server
     try {
         driver = get_driver_instance();
         con = driver->connect(argv[1], argv[2], argv[3]);
@@ -146,6 +146,7 @@ int main(int argc, const char **argv) {
         return EXIT_FAILURE;
     }
 
+    // Create table of customer information
     statement = con->createStatement();
     try {
         statement->executeQuery("CREATE TABLE IF NOT EXISTS \\
@@ -154,13 +155,15 @@ int main(int argc, const char **argv) {
 
     }
     
+    // Insert customer information
     try {
-        statement->executeQuery("INSERT INTO customer_information VALUES(1,'John','Smith',213.73,510.67);");
+        statement->executeQuery("INSERT INTO IF NOT EXISTS customer_information VALUES(1,'John','Smith',213.73,510.67);");
     }
     catch (sql::SQLException& e) {
 
     }
 
+    // Retreive balances from table
     float bank_balance = 0;
     float on_hand_balance = 0;
 
@@ -168,7 +171,7 @@ int main(int argc, const char **argv) {
         result_set = statement->executeQuery("SELECT on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
     }
     catch (sql::SQLException& e) {
-        std::cout << "Not Working";
+        std::cout << "Cound not retreive on_hand_balance and bank_balance. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
     }
 
