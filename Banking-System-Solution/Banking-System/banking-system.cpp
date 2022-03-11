@@ -131,34 +131,34 @@ void WithdrawFromBankBalance(Customer* person, sql::Statement* statement) {
 }
 
 void BalanceOptions(Customer* person, sql::Statement* statement) {
-    unsigned int bal_option_num;
+  unsigned int bal_option_num;
 
-    std::cout << "Enter one of the numbers to get help on balance:\n";
-    std::cout << "(1) Get Bank Balance\n";
-    std::cout << "(2) Deposit Into Bank Balance\n";
-    std::cout << "(3) Withdraw Out Bank Balance\n";
-    std::cout << "(0) Exit\n";
+  std::cout << "Enter one of the numbers to get help on balance:\n";
+  std::cout << "(1) Get Bank Balance\n";
+  std::cout << "(2) Deposit Into Bank Balance\n";
+  std::cout << "(3) Withdraw Out Bank Balance\n";
+  std::cout << "(0) Exit\n";
 
-    std::vector<unsigned int> valid_bal_nums = { 0, 1, 2, 3 };
-    bal_option_num = CheckNumberInput(valid_bal_nums);
+  std::vector<unsigned int> valid_bal_nums = { 0, 1, 2, 3 };
+  bal_option_num = CheckNumberInput(valid_bal_nums);
 
-    switch (bal_option_num) {
-    case 0:
-        std::cout << "Goodbye\n";
-        break;
-    case 1:
-        person->GetBankBalancePrompt();
-        break;
-    case 2:
-        DepositFromBankBalance(person, statement);
-        break;
-    case 3:
-        WithdrawFromBankBalance(person, statement);
-        break;
-    default:
-        std::cout << "Not a Valid Option\n";
-        break;
-    }
+  switch (bal_option_num) {
+  case 0:
+    std::cout << "Goodbye\n";
+    break;
+  case 1:
+    person->GetBankBalancePrompt();
+    break;
+  case 2:
+    DepositFromBankBalance(person, statement);
+    break;
+  case 3:
+    WithdrawFromBankBalance(person, statement);
+    break;
+  default:
+    std::cout << "Not a Valid Option\n";
+    break;
+  }
 }
 
 int main(int argc, const char **argv) {
