@@ -157,7 +157,7 @@ int main(int argc, const char **argv) {
     // Create table of customer information
     statement = con->createStatement();
     try {
-        statement->execute("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), bank_balance DECIMAL(10,2), on_hand_balance DECIMAL(10,2));");
+        statement->execute("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), bank_balance DECIMAL(10,2), on_hand_balance DECIMAL(10,2));");
     } catch (sql::SQLException& e) {
         std::cout << "Creation of table failed. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
@@ -165,7 +165,7 @@ int main(int argc, const char **argv) {
     
     // Insert customer information
     try {
-        statement->execute("INSERT INTO customer_information VALUES(1,'John','Smith',213.73,510.67);");
+        statement->execute("INSERT INTO customer_information VALUES(NULL,'John','Smith',213.73,510.67);");
     }
     catch (sql::SQLException& e) {
         std::cout << "Insertion into table failed. Error Message: " << e.what() << "\n";
@@ -181,7 +181,7 @@ int main(int argc, const char **argv) {
         result_set = statement->executeQuery("SELECT first_name,last_name,on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
     }
     catch (sql::SQLException& e) {
-        std::cout << "Cound not retreive on_hand_balance and bank_balance. Error Message: " << e.what() << "\n";
+        std::cout << "Cound not retreive data. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
     }
 
@@ -194,7 +194,7 @@ int main(int argc, const char **argv) {
 
     Customer* person = new Customer(first_name, last_name, bank_balance, on_hand_balance);
    
-    std::cout << "Welcome to Earth Bank!\n\n" ;
+    std::cout << "Welcome to Earth Bank, " << first_name << " " << last_name << "!\n\n";
     std::cout << "Enter the one of the following numbers to be serviced:\n" ;
     std::cout << "(1) Balance\n";
     std::cout << "(0) Exit\n";
