@@ -11,45 +11,45 @@
 #include<cppconn/statement.h>
 
 class Customer {
-public:
-    Customer() {
-    }
-    Customer(std::string f_n, std::string l_n, long double b_b, long double o_n_b): 
-        first_name(f_n), last_name(l_n), bank_balance(b_b), on_hand_balance(o_n_b) {
-    }
+ public:
+  Customer() {}
+  Customer(std::string f_n, std::string l_n, long double b_b, long double o_n_b): 
+      first_name(f_n), last_name(l_n), bank_balance(b_b), on_hand_balance(o_n_b) {
+  }
 
-    void DepositMoney(long double money) {
-        bank_balance += money;
-        on_hand_balance -= money;
-    }
-    void WithdrawMoney(long double money) {
-        bank_balance -= money;
-        on_hand_balance += money;
-    }
+  void DepositMoney(long double money) {
+    bank_balance += money;
+    on_hand_balance -= money;
+  }
+  void WithdrawMoney(long double money) {
+    bank_balance -= money;
+    on_hand_balance += money;
+  }
 
-    long double GetBankBalance() { return bank_balance; }
-    void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance << "\n"; }
+  long double GetBankBalance() { return bank_balance; }
+  void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance << "\n"; }
 
-    long double GetOnHandBalance() { return on_hand_balance; }
-    void GetOnHandBalancePrompt() {
-        std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
-    }
+  long double GetOnHandBalance() { return on_hand_balance; }
+  void GetOnHandBalancePrompt() {
+    std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
+  }
 
-    std::string GetFirstName() { return first_name; }
-    std::string GetLastName() { return last_name; }
+  void SetBankBalance(long double money) {
+    bank_balance = money;
+  }
+  void SetOnHandBalance(long double money) {
+    on_hand_balance = money;
+  }
 
-    void SetBankBalance(long double money) {
-        bank_balance = money;
-    }
-    void SetOnHandBalance(long double money) {
-        on_hand_balance = money;
-    }
-private:
-    long double bank_balance = 0;
-    long double on_hand_balance = 0;
+  std::string GetFirstName() { return first_name; }
+  std::string GetLastName() { return last_name; }
 
-    std::string first_name;
-    std::string last_name;
+ private:
+  long double bank_balance = 0;
+  long double on_hand_balance = 0;
+
+  std::string first_name;
+  std::string last_name;
 };
 
 void DepositFromBankBalance(Customer* person, sql::Statement* statement) {
