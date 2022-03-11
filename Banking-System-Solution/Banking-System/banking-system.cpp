@@ -30,6 +30,8 @@ public:
     void GetOnHandBalancePrompt() {
         std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
     }
+    std::string getFirstName() { return first_name; }
+    std::string getLastName() { return last_name; }
     void SetBankBalance(long double money) {
         bank_balance = money;
     }
@@ -143,7 +145,7 @@ int main(int argc, const char **argv) {
         std::cout << "Could not connect to server. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
     }
-
+    
     // Created schema ahead of time in MySQL Workbench
     try {
         con->setSchema("earth_bank");
@@ -151,7 +153,7 @@ int main(int argc, const char **argv) {
         std::cout << "Could not find schema. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
     }
-
+    
     // Create table of customer information
     statement = con->createStatement();
     try {
