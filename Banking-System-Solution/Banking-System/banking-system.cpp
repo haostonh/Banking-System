@@ -14,42 +14,42 @@ class Customer {
  public:
   Customer() {}
   Customer(std::string f_n, std::string l_n, long double b_b, long double o_n_b): 
-      first_name(f_n), last_name(l_n), bank_balance(b_b), on_hand_balance(o_n_b) {
+      first_name_(f_n), last_name_(l_n), bank_balance_(b_b), on_hand_balance_(o_n_b) {
   }
 
   void DepositMoney(long double money) {
-    bank_balance += money;
-    on_hand_balance -= money;
+    bank_balance_ += money;
+    on_hand_balance_ -= money;
   }
   void WithdrawMoney(long double money) {
-    bank_balance -= money;
-    on_hand_balance += money;
+    bank_balance_ -= money;
+    on_hand_balance_ += money;
   }
 
-  long double GetBankBalance() { return bank_balance; }
-  void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance << "\n"; }
+  long double GetBankBalance() { return bank_balance_; }
+  void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance_ << "\n"; }
 
-  long double GetOnHandBalance() { return on_hand_balance; }
+  long double GetOnHandBalance() { return on_hand_balance_; }
   void GetOnHandBalancePrompt() {
-    std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
+    std::cout << "Your On Hand Balance: " << on_hand_balance_ << "\n";
   }
 
   void SetBankBalance(long double money) {
-    bank_balance = money;
+    bank_balance_ = money;
   }
   void SetOnHandBalance(long double money) {
-    on_hand_balance = money;
+    on_hand_balance_ = money;
   }
 
-  std::string GetFirstName() { return first_name; }
-  std::string GetLastName() { return last_name; }
+  std::string GetFirstName() { return first_name_; }
+  std::string GetLastName() { return last_name_; }
 
  private:
-  long double bank_balance = 0;
-  long double on_hand_balance = 0;
+  long double bank_balance_ = 0;
+  long double on_hand_balance_ = 0;
 
-  std::string first_name;
-  std::string last_name;
+  std::string first_name_;
+  std::string last_name_;
 };
 
 void DepositFromBankBalance(Customer* person, sql::Statement* statement) {
