@@ -35,8 +35,8 @@ public:
         std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
     }
 
-    std::string getFirstName() { return first_name; }
-    std::string getLastName() { return last_name; }
+    std::string GetFirstName() { return first_name; }
+    std::string GetLastName() { return last_name; }
 
     void SetBankBalance(long double money) {
         bank_balance = money;
