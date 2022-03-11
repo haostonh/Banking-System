@@ -155,7 +155,7 @@ int main(int argc, const char **argv) {
     // Create table of customer information
     statement = con->createStatement();
     try {
-        statement->execute("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), on_hand_balance DECIMAL(10,2), bank_balance DECIMAL(10,2));");
+        statement->execute("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), bank_balance DECIMAL(10,2), on_hand_balance DECIMAL(10,2));");
     } catch (sql::SQLException& e) {
         std::cout << "Creation of table failed. Error Message: " << e.what() << "\n";
         return EXIT_FAILURE;
@@ -173,9 +173,10 @@ int main(int argc, const char **argv) {
     // Retreive balances from table
     long double bank_balance = 0;
     long double on_hand_balance = 0;
+    std::string first_name, last_name;
 
     try {
-        result_set = statement->executeQuery("SELECT on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
+        result_set = statement->executeQuery("SELECT first_name,last_name,on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
     }
     catch (sql::SQLException& e) {
         std::cout << "Cound not retreive on_hand_balance and bank_balance. Error Message: " << e.what() << "\n";
@@ -183,14 +184,14 @@ int main(int argc, const char **argv) {
     }
 
     while (result_set->next()) {
-        on_hand_balance = result_set->getDouble("on_hand_balance");
+        first_name = result_set->getString("first_name");
+        last_name = result_set->getString("last_name");
         bank_balance = result_set->getDouble("bank_balance");
+        on_hand_balance = result_set->getDouble("on_hand_balance");
     }
 
-    Customer* John = new Customer();
-    John->SetBankBalance(bank_balance);
-    John->SetOnHandBalance(on_hand_balance);
-
+    Customer* person = new Customer(first_name, last_name, bank_balance, on_hand_balance);
+   
     std::cout << "Welcome to Earth Bank!\n\n" ;
     std::cout << "Enter the one of the following numbers to be serviced:\n" ;
     std::cout << "(1) Balance\n";
@@ -207,7 +208,7 @@ int main(int argc, const char **argv) {
         break;
     case 1:
         std::cout << "Balance\n";
-        BalanceOptions(John);
+        BalanceOptions(person);
         break;
     default:
         std::cout << "Not a valid service number\n";
