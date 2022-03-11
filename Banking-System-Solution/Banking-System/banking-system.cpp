@@ -48,7 +48,7 @@ private:
     std::string first_name, last_name;
 };
 
-void DepositFromBankBalance(Customer* person) {
+void DepositFromBankBalance(Customer* person, sql::Statement* statement) {
     bool is_valid_deposit = false;
     long double deposit_amount = 0;
 
@@ -73,7 +73,7 @@ void DepositFromBankBalance(Customer* person) {
     }
 }
 
-void WithdrawFromBankBalance(Customer* person) {
+void WithdrawFromBankBalance(Customer* person, sql::Statement* statement) {
     bool is_valid_withdrawal = false;
     long double withdraw_amount = 0;
 
@@ -98,7 +98,7 @@ void WithdrawFromBankBalance(Customer* person) {
     }
 }
 
-void BalanceOptions(Customer* person) {
+void BalanceOptions(Customer* person, sql::Statement* statement) {
     unsigned int bal_option_num;
 
     std::cout << "Enter one of the numbers to get help on balance:\n";
@@ -118,10 +118,10 @@ void BalanceOptions(Customer* person) {
         person->GetBankBalancePrompt();
         break;
     case 2:
-        DepositFromBankBalance(person);
+        DepositFromBankBalance(person, statement);
         break;
     case 3:
-        WithdrawFromBankBalance(person);
+        WithdrawFromBankBalance(person, statement);
         break;
     default:
         std::cout << "Not a Valid Option\n";
@@ -210,7 +210,7 @@ int main(int argc, const char **argv) {
         break;
     case 1:
         std::cout << "Balance\n";
-        BalanceOptions(person);
+        BalanceOptions(person, statement);
         break;
     default:
         std::cout << "Not a valid service number\n";
