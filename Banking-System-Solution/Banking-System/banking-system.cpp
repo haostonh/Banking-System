@@ -179,7 +179,6 @@ int main(int argc, const char **argv) {
         bank_balance = result_set->getDouble("bank_balance");
     }
 
-    std::cout << bank_balance << std::endl;
     Customer* John = new Customer();
     John->SetBankBalance(bank_balance);
     John->SetOnHandBalance(on_hand_balance);
