@@ -1,14 +1,14 @@
-#include"input-checkers.h"
-
 #include<iostream>
 #include<sstream>
 #include<string>
 #include<vector>
 
-#include"mysql_connection.h"
 #include<cppconn/driver.h>
 #include<cppconn/exception.h>
 #include<cppconn/statement.h>
+#include"mysql_connection.h"
+
+#include"input-checkers.h"
 
 class Customer {
  public:
