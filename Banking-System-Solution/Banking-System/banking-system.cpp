@@ -40,7 +40,8 @@ public:
         on_hand_balance += money;
     }
 private:
-    float bank_balance, on_hand_balance;
+    float bank_balance = 0;
+    float on_hand_balance = 0;
     std::string first_name, last_name;
 };
 
