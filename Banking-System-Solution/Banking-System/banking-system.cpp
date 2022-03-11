@@ -216,7 +216,8 @@ int main(int argc, const char **argv) {
     }
 
     Customer* person = new Customer(first_name, last_name, bank_balance, on_hand_balance);
-   
+    
+    // Introduction to customer
     std::cout << "Welcome to Earth Bank, " << first_name << " " << last_name << "!\n\n";
     std::cout << "Enter the one of the following numbers to be serviced:\n" ;
     std::cout << "(1) Balance\n";
