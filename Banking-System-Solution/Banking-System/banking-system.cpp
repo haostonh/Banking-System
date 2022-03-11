@@ -89,6 +89,8 @@ void DepositFromBankBalance(Customer* person, sql::Statement* statement) {
 void WithdrawFromBankBalance(Customer* person, sql::Statement* statement) {
     bool is_valid_withdrawal = false;
     long double withdraw_amount = 0;
+    std::string bank_balance, on_hand_balance;
+    std::ostringstream ss_bank_balance, ss_on_hand_balance;
 
     while (!is_valid_withdrawal) {
         withdraw_amount = CheckForValidAmount("Withdraw");
@@ -103,6 +105,17 @@ void WithdrawFromBankBalance(Customer* person, sql::Statement* statement) {
         }
         else {
             person->WithdrawMoney(withdraw_amount);
+            try {
+                ss_bank_balance << person->GetBankBalance();
+                ss_on_hand_balance << person->GetOnHandBalance();
+                bank_balance = ss_bank_balance.str();
+                on_hand_balance = ss_on_hand_balance.str();
+                statement->execute("UPDATE customer_information SET bank_balance = " + bank_balance + ", on_hand_balance = " + on_hand_balance + " WHERE customer_id = 1;");
+            }
+            catch (sql::SQLException& e) {
+                std::cout << "Withdraw Update Not Successful. Error Message: " << e.what() << "\n";
+                break;
+            }
             std::cout << "Money Withdrew Successfully!" << std::endl;
             person->GetOnHandBalancePrompt();
             person->GetBankBalancePrompt();
