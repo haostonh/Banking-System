@@ -55,8 +55,10 @@ class Customer {
 void DepositFromBankBalance(Customer* person, sql::Statement* statement) {
   bool is_valid_deposit = false;
   long double deposit_amount = 0;
-  std::string bank_balance, on_hand_balance;
-  std::ostringstream ss_bank_balance, ss_on_hand_balance;
+  std::string bank_balance;
+  std::string on_hand_balance;
+  std::ostringstream ss_bank_balance;
+  std::ostringstream ss_on_hand_balance;
 
   while (!is_valid_deposit) {
     deposit_amount = CheckForValidAmount("Deposit");
