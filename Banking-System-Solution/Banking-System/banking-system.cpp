@@ -162,96 +162,96 @@ void BalanceOptions(Customer* person, sql::Statement* statement) {
 }
 
 int main(int argc, const char **argv) {
-    unsigned int service_num;
-    sql::Connection* con;
-    sql::Driver* driver;
-    sql::Statement* statement;
-    sql::ResultSet* result_set;
+  unsigned int service_num;
+  sql::Connection* con;
+  sql::Driver* driver;
+  sql::Statement* statement;
+  sql::ResultSet* result_set;
     
-    // Make the Connection with MySQL Server
-    try {
-        driver = get_driver_instance();
-        con = driver->connect(argv[1], argv[2], argv[3]);
-        std::cout << "Connection Successful!\n" ;
-    } catch (sql::SQLException& e) {
-        std::cout << "Could not connect to server. Error Message: " << e.what() << "\n";
-        return EXIT_FAILURE;
-    }
+  // Make the Connection with MySQL Server
+  try {
+    driver = get_driver_instance();
+    con = driver->connect(argv[1], argv[2], argv[3]);
+    std::cout << "Connection Successful!\n";
+  } catch (sql::SQLException& e) {
+    std::cout << "Could not connect to server. Error Message: " << e.what() << "\n";
+    return EXIT_FAILURE;
+  }
     
-    // Created schema ahead of time in MySQL Workbench
-    try {
-        con->setSchema("earth_bank");
-    } catch (sql::SQLException& e) {
-        std::cout << "Could not find schema. Error Message: " << e.what() << "\n";
-        return EXIT_FAILURE;
-    }
+  // Created schema ahead of time in MySQL Workbench
+  try {
+    con->setSchema("earth_bank");
+  } catch (sql::SQLException& e) {
+    std::cout << "Could not find schema. Error Message: " << e.what() << "\n";
+    return EXIT_FAILURE;
+  }
     
-    // Create table of customer information
-    statement = con->createStatement();
-    try {
-        statement->execute("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), bank_balance DECIMAL(10,2), on_hand_balance DECIMAL(10,2));");
-    } catch (sql::SQLException& e) {
-        std::cout << "Creation of table failed. Error Message: " << e.what() << "\n";
-        return EXIT_FAILURE;
-    }
+  // Create table of customer information
+  statement = con->createStatement();
+  try {
+    statement->execute("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), bank_balance DECIMAL(10,2), on_hand_balance DECIMAL(10,2));");
+  } catch (sql::SQLException& e) {
+    std::cout << "Creation of table failed. Error Message: " << e.what() << "\n";
+    return EXIT_FAILURE;
+  }
     
-    // Insert customer information
-    try {
-        statement->execute("INSERT INTO customer_information VALUES(NULL,'John','Smith',213.73,510.67);");
-    }
-    catch (sql::SQLException& e) {
-        std::cout << "Insertion into table failed. Error Message: " << e.what() << "\n";
-        return EXIT_FAILURE;
-    }
+  // Insert customer information
+  try {
+    statement->execute("INSERT INTO customer_information VALUES(NULL,'John','Smith',213.73,510.67);");
+  }
+  catch (sql::SQLException& e) {
+    std::cout << "Insertion into table failed. Error Message: " << e.what() << "\n";
+    return EXIT_FAILURE;
+  }
 
-    // Retreive balances from table
-    long double bank_balance = 0;
-    long double on_hand_balance = 0;
-    std::string first_name, last_name;
+  // Retreive balances from table
+  long double bank_balance = 0;
+  long double on_hand_balance = 0;
+  std::string first_name, last_name;
 
-    try {
-        result_set = statement->executeQuery("SELECT first_name,last_name,on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
-    }
-    catch (sql::SQLException& e) {
-        std::cout << "Cound not retreive data. Error Message: " << e.what() << "\n";
-        return EXIT_FAILURE;
-    }
+  try {
+    result_set = statement->executeQuery("SELECT first_name,last_name,on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
+  }
+  catch (sql::SQLException& e) {
+    std::cout << "Cound not retreive data. Error Message: " << e.what() << "\n";
+    return EXIT_FAILURE;
+  }
 
-    while (result_set->next()) {
-        first_name = result_set->getString("first_name");
-        last_name = result_set->getString("last_name");
-        bank_balance = result_set->getDouble("bank_balance");
-        on_hand_balance = result_set->getDouble("on_hand_balance");
-    }
+  while (result_set->next()) {
+    first_name = result_set->getString("first_name");
+    last_name = result_set->getString("last_name");
+    bank_balance = result_set->getDouble("bank_balance");
+    on_hand_balance = result_set->getDouble("on_hand_balance");
+  }
 
-    Customer* person = new Customer(first_name, last_name, bank_balance, on_hand_balance);
+  Customer* person = new Customer(first_name, last_name, bank_balance, on_hand_balance);
     
-    // Introduction to customer
-    std::cout << "Welcome to Earth Bank, " << first_name << " " << last_name << "!\n\n";
-    std::cout << "Enter the one of the following numbers to be serviced:\n" ;
-    std::cout << "(1) Balance\n";
-    std::cout << "(0) Exit\n";
+  // Introduction to customer
+  std::cout << "Welcome to Earth Bank, " << first_name << " " << last_name << "!\n\n";
+  std::cout << "Enter the one of the following numbers to be serviced:\n" ;
+  std::cout << "(1) Balance\n";
+  std::cout << "(0) Exit\n";
 
-    std::vector<unsigned int> valid_service_nums = { 0, 1 };
-    service_num = CheckNumberInput(valid_service_nums);
+  std::vector<unsigned int> valid_service_nums = { 0, 1 };
+  service_num = CheckNumberInput(valid_service_nums);
 
-    std::cout << "\n";
+  std::cout << "\n";
 
-    switch (service_num) {
-    case 0:
-        std::cout << "Goodbye\n";
-        break;
-    case 1:
-        std::cout << "Balance\n";
-        BalanceOptions(person, statement);
-        break;
-    default:
-        std::cout << "Not a valid service number\n";
-        break;
-    }
+  switch (service_num) {
+  case 0:
+    std::cout << "Goodbye\n";
+    break;
+  case 1:
+    std::cout << "Balance\n";
+    BalanceOptions(person, statement);
+    break;
+  default:
+    std::cout << "Not a valid service number\n";
+    break;
+  }
 
-    delete result_set;
-    delete statement;
-    delete con;
-    return EXIT_SUCCESS;
+  delete result_set;
+  delete statement;
+  delete con;
+  return EXIT_SUCCESS;
 }
