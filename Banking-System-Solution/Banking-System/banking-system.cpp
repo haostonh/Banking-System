@@ -156,7 +156,7 @@ int main(int argc, const char **argv) {
     
     // Insert customer information
     try {
-        statement->executeQuery("INSERT INTO IF NOT EXISTS customer_information VALUES(1,'John','Smith',213.73,510.67);");
+        statement->executeQuery("INSERT INTO customer_information VALUES(1,'John','Smith',213.73,510.67);");
     }
     catch (sql::SQLException& e) {
 
@@ -179,9 +179,10 @@ int main(int argc, const char **argv) {
         bank_balance = result_set->getDouble("bank_balance");
     }
 
+    std::cout << bank_balance << std::endl;
     Customer* John = new Customer();
-    John->SetBankBalance(on_hand_balance);
-    John->SetOnHandBalance(bank_balance);
+    John->SetBankBalance(bank_balance);
+    John->SetOnHandBalance(on_hand_balance);
 
     std::cout << "Welcome to Earth Bank!\n\n" ;
     std::cout << "Enter the one of the following numbers to be serviced:\n" ;
