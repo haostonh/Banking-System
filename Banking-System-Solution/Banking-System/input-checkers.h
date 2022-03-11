@@ -4,9 +4,9 @@
 #include<string>
 #include<vector>
 
-double CheckForValidAmount(std::string action) {
+long double CheckForValidAmount(std::string action) {
     bool is_valid_amount = false;
-    double input_amount;
+    long double input_amount;
     std::string str_input_amount;
     std::stringstream ss_input_amount;
 

@@ -19,35 +19,35 @@ public:
     }
     Customer(std::string f_n, std::string l_n): first_name(f_n), last_name(l_n) {
     }
-    void DepositMoney(float money) {
+    void DepositMoney(long double money) {
         bank_balance += money;
         on_hand_balance -= money;
     }
-    float GetBankBalance() { return bank_balance; }
+    long double GetBankBalance() { return bank_balance; }
     void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance << "\n"; }
-    float GetOnHandBalance() { return on_hand_balance; }
+    long double GetOnHandBalance() { return on_hand_balance; }
     void GetOnHandBalancePrompt() {
         std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
     }
-    void SetBankBalance(float money) {
+    void SetBankBalance(long double money) {
         bank_balance = money;
     }
-    void SetOnHandBalance(float money) {
+    void SetOnHandBalance(long double money) {
         on_hand_balance = money;
     }
-    void WithdrawMoney(float money) {
+    void WithdrawMoney(long double money) {
         bank_balance -= money;
         on_hand_balance += money;
     }
 private:
-    float bank_balance = 0;
-    float on_hand_balance = 0;
+    long double bank_balance = 0;
+    long double on_hand_balance = 0;
     std::string first_name, last_name;
 };
 
 void DepositFromBankBalance(Customer* person) {
     bool is_valid_deposit = false;
-    float deposit_amount = 0;
+    long double deposit_amount = 0;
 
     while (!is_valid_deposit) {
         deposit_amount = CheckForValidAmount("Deposit");
@@ -72,7 +72,7 @@ void DepositFromBankBalance(Customer* person) {
 
 void WithdrawFromBankBalance(Customer* person) {
     bool is_valid_withdrawal = false;
-    float withdraw_amount = 0;
+    long double withdraw_amount = 0;
 
     while (!is_valid_withdrawal) {
         withdraw_amount = CheckForValidAmount("Withdraw");
@@ -168,8 +168,8 @@ int main(int argc, const char **argv) {
     }
 
     // Retreive balances from table
-    float bank_balance = 0;
-    float on_hand_balance = 0;
+    long double bank_balance = 0;
+    long double on_hand_balance = 0;
 
     try {
         result_set = statement->executeQuery("SELECT on_hand_balance,bank_balance FROM customer_information WHERE customer_id = 1;");
