@@ -17,32 +17,39 @@ public:
     Customer(std::string f_n, std::string l_n, long double b_b, long double o_n_b): 
         first_name(f_n), last_name(l_n), bank_balance(b_b), on_hand_balance(o_n_b) {
     }
+
     void DepositMoney(long double money) {
         bank_balance += money;
         on_hand_balance -= money;
     }
+    void WithdrawMoney(long double money) {
+        bank_balance -= money;
+        on_hand_balance += money;
+    }
+
     long double GetBankBalance() { return bank_balance; }
     void GetBankBalancePrompt() { std::cout << "Your Bank Balance: " << bank_balance << "\n"; }
+
     long double GetOnHandBalance() { return on_hand_balance; }
     void GetOnHandBalancePrompt() {
         std::cout << "Your On Hand Balance: " << on_hand_balance << "\n";
     }
+
     std::string getFirstName() { return first_name; }
     std::string getLastName() { return last_name; }
+
     void SetBankBalance(long double money) {
         bank_balance = money;
     }
     void SetOnHandBalance(long double money) {
         on_hand_balance = money;
     }
-    void WithdrawMoney(long double money) {
-        bank_balance -= money;
-        on_hand_balance += money;
-    }
 private:
     long double bank_balance = 0;
     long double on_hand_balance = 0;
-    std::string first_name, last_name;
+
+    std::string first_name;
+    std::string last_name;
 };
 
 void DepositFromBankBalance(Customer* person, sql::Statement* statement) {
