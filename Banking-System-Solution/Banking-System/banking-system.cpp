@@ -17,7 +17,8 @@ class Customer {
 public:
     Customer() {
     }
-    Customer(std::string f_n, std::string l_n): first_name(f_n), last_name(l_n) {
+    Customer(std::string f_n, std::string l_n, long double b_b, long double o_n_b): 
+        first_name(f_n), last_name(l_n), bank_balance(b_b), on_hand_balance(o_n_b) {
     }
     void DepositMoney(long double money) {
         bank_balance += money;
