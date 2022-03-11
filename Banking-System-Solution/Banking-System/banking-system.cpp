@@ -53,41 +53,38 @@ class Customer {
 };
 
 void DepositFromBankBalance(Customer* person, sql::Statement* statement) {
-    bool is_valid_deposit = false;
-    long double deposit_amount = 0;
-    std::string bank_balance, on_hand_balance;
-    std::ostringstream ss_bank_balance, ss_on_hand_balance;
+  bool is_valid_deposit = false;
+  long double deposit_amount = 0;
+  std::string bank_balance, on_hand_balance;
+  std::ostringstream ss_bank_balance, ss_on_hand_balance;
 
-    while (!is_valid_deposit) {
-        deposit_amount = CheckForValidAmount("Deposit");
+  while (!is_valid_deposit) {
+    deposit_amount = CheckForValidAmount("Deposit");
 
-        if (deposit_amount > person->GetOnHandBalance()) {
-            std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
-            continue;
-        }
-        else if (deposit_amount < 0) {
-            std::cout << "Cannot Deposit a Negative Amount, Try Again" << std::endl;
-            continue;
-        }
-        else {
-            person->DepositMoney(deposit_amount);
-            try {
-                ss_bank_balance << person->GetBankBalance();
-                ss_on_hand_balance << person->GetOnHandBalance();
-                bank_balance = ss_bank_balance.str();
-                on_hand_balance = ss_on_hand_balance.str();
-                statement->execute("UPDATE customer_information SET bank_balance = " + bank_balance + ", on_hand_balance = " + on_hand_balance + " WHERE customer_id = 1;");
-            }
-            catch (sql::SQLException& e) {
-                std::cout << "Deposit Update Not Successful. Error Message: " << e.what() << "\n";
-                break;
-            }
-            std::cout << "Money Deposited Successfully!" << std::endl;
-            person->GetOnHandBalancePrompt();
-            person->GetBankBalancePrompt();
-            is_valid_deposit = true;
-        }
+    if (deposit_amount > person->GetOnHandBalance()) {
+      std::cout << "Cannot Deposit Amount Specified, Try Again" << std::endl;
+      continue;
+    } else if (deposit_amount < 0) {
+      std::cout << "Cannot Deposit a Negative Amount, Try Again" << std::endl;
+      continue;
+    } else {
+      person->DepositMoney(deposit_amount);
+      try {
+        ss_bank_balance << person->GetBankBalance();
+        ss_on_hand_balance << person->GetOnHandBalance();
+        bank_balance = ss_bank_balance.str();
+        on_hand_balance = ss_on_hand_balance.str();
+        statement->execute("UPDATE customer_information SET bank_balance = " + bank_balance + ", on_hand_balance = " + on_hand_balance + " WHERE customer_id = 1;");
+      } catch (sql::SQLException& e) {
+        std::cout << "Deposit Update Not Successful. Error Message: " << e.what() << "\n";
+        break;
+      }
+      std::cout << "Money Deposited Successfully!" << std::endl;
+      person->GetOnHandBalancePrompt();
+      person->GetBankBalancePrompt();
+      is_valid_deposit = true;
     }
+  }
 }
 
 void WithdrawFromBankBalance(Customer* person, sql::Statement* statement) {
