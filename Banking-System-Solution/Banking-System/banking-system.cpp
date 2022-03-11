@@ -15,6 +15,8 @@
 
 class Customer {
 public:
+    Customer() {
+    }
     Customer(std::string f_n, std::string l_n): first_name(f_n), last_name(l_n) {
     }
     void DepositMoney(float money) {
