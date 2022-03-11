@@ -15,6 +15,8 @@
 
 class Customer {
 public:
+    Customer(std::string f_n, std::string l_n): first_name(f_n), last_name(l_n) {
+    }
     void DepositMoney(float money) {
         bank_balance += money;
         on_hand_balance -= money;
@@ -37,6 +39,7 @@ public:
     }
 private:
     float bank_balance, on_hand_balance;
+    std::string first_name, last_name;
 };
 
 void DepositFromBankBalance(Customer* person) {
