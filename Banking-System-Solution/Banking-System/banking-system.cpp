@@ -154,17 +154,19 @@ int main(int argc, const char **argv) {
     // Create table of customer information
     statement = con->createStatement();
     try {
-        statement->executeQuery("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), on_hand_balance DECIMAL(10,2), bank_balance DECIMAL(10,2));");
+        statement->execute("CREATE TABLE IF NOT EXISTS customer_information(customer_id INT PRIMARY KEY, first_name VARCHAR(20), last_name VARCHAR(20), on_hand_balance DECIMAL(10,2), bank_balance DECIMAL(10,2));");
     } catch (sql::SQLException& e) {
-
+        std::cout << "Creation of table failed. Error Message: " << e.what() << "\n";
+        return EXIT_FAILURE;
     }
     
     // Insert customer information
     try {
-        statement->executeQuery("INSERT INTO customer_information VALUES(1,'John','Smith',213.73,510.67);");
+        statement->execute("INSERT INTO customer_information VALUES(1,'John','Smith',213.73,510.67);");
     }
     catch (sql::SQLException& e) {
-
+        std::cout << "Insertion into table failed. Error Message: " << e.what() << "\n";
+        return EXIT_FAILURE;
     }
 
     // Retreive balances from table
