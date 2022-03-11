@@ -104,7 +104,7 @@ void BalanceOptions(Customer* person) {
     std::cout << "(3) Withdraw Out Bank Balance\n";
     std::cout << "(0) Exit\n";
 
-    std::vector<int> valid_bal_nums = { 0, 1, 2, 3 };
+    std::vector<unsigned int> valid_bal_nums = { 0, 1, 2, 3 };
     bal_option_num = CheckNumberInput(valid_bal_nums);
 
     switch (bal_option_num) {
@@ -195,7 +195,7 @@ int main(int argc, const char **argv) {
     std::cout << "(1) Balance\n";
     std::cout << "(0) Exit\n";
 
-    std::vector<int> valid_service_nums = { 0, 1 };
+    std::vector<unsigned int> valid_service_nums = { 0, 1 };
     service_num = CheckNumberInput(valid_service_nums);
 
     std::cout << "\n";

@@ -30,9 +30,9 @@ long double CheckForValidAmount(std::string action) {
     return input_amount;
 }
 
-int CheckNumberInput(std::vector<int> valid_nums) {
+unsigned int CheckNumberInput(std::vector<unsigned int> valid_nums) {
     bool is_valid_num = false;
-    int input_num;
+    unsigned int input_num;
     std::string str_input_num;
     std::stringstream ss_input_num;
 
