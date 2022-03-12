@@ -15,7 +15,7 @@ long double CheckForValidAmount(std::string action) {
     std::cout << "Enter amount to " << action << ": ";
     std::getline(std::cin, str_input_amount);
     if (!(std::regex_match(str_input_amount, std::regex("([0-9]+)\\.([0-9]){2}")))) {
-      std::cout << "\nPlease enter a value less than a billion with two decimal places. Try Again.\n" << std::endl;
+      std::cout << "\nPlease enter a value less than a billion with two decimal places. Try Again." << std::endl;
       continue;
     }
     ss_input_amount << str_input_amount;
