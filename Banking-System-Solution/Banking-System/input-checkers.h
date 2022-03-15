@@ -1,3 +1,6 @@
+#ifndef BANKING_SYSTEM_INPUT_CHECKERS_H_
+#define BANKING_SYSTEM_INPUT_CHECKERS_H_ 
+
 #include<algorithm>
 #include<iostream>
 #include<regex>
@@ -69,3 +72,5 @@ unsigned int CheckNumberInput(std::vector<unsigned int> valid_nums) {
 
   return input_num;
 }
+
+#endif // BANKING_SYSTEM_INPUT_CHECKERS_H_
