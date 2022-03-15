@@ -10,6 +10,8 @@
 
 #include"input-checkers.h"
 
+long double CheckForValidAmount(std::string action);
+
 class Customer {
  public:
   Customer() {}
