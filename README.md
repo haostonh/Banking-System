@@ -15,5 +15,5 @@
 1. Right Click on Solution -> Properties
 2. Ensure the solution is set to Release|x64 
 3. In Debugging (3rd item under Configuration Properties):
-  1. Ensure that the command arguments are set to the following:
+  - Ensure that the command arguments are set to the following:
     - `URL Username Password`  
