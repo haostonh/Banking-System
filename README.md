@@ -13,7 +13,7 @@
 
 ## Configuration Notes
 1. Right Click on Solution -> Properties
-2. Ensure the configuration is set to **Release** and platform is set to **x64** 
+2. Ensure the configuration is set to **Release** and platform is set to **x64**
 3. In Debugging (3rd item under Configuration Properties):
   - Ensure that the command arguments are set to the following:
-    - `URL Username Password`  
+    - `URL Username Password`
