@@ -12,3 +12,8 @@
   - Version 8.0
 
 ## Configuration Notes
+1. Right Click on Solution -> Properties
+2. Ensure the solution is set to Release|x64 
+3. In Debugging (3rd item under Configuration Properties):
+  - Ensure that the command arguments are set to the following:
+    - `URL Username Password`  
