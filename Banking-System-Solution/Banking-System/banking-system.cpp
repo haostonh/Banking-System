@@ -197,7 +197,7 @@ int main(int argc, const char **argv) {
     return EXIT_FAILURE;
   }
     
-  // Insert customer information
+  // Insert customer information (for demonstration purposes)
   try {
     statement->execute("INSERT INTO customer_information VALUES(NULL,'John','Smith',213.73,510.67);");
   }
