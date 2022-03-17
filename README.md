@@ -6,6 +6,7 @@
 - Visual Studio 2019 (with Desktop development with C++)
 - MySQL C++ Driver (Connector/C++)
   - Version 8.0.28
+  - Also ensure you have a zip file
 - MySQL for Visual Studio
   - Version 1.2.10
 - MySQL Router/Server
