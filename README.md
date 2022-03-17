@@ -6,7 +6,7 @@
 - Visual Studio 2019 (with Desktop development with C++)
 - MySQL C++ Driver (Connector/C++)
   - Version 8.0.28
-  - Also ensure you have a zip file
+  - Also ensure you download the zip file version with it extracted
 - MySQL for Visual Studio
   - Version 1.2.10
 - MySQL Router/Server
@@ -18,3 +18,10 @@
 3. In Debugging (3rd item under Configuration Properties):
   - Ensure that the command arguments are set to the following:
     - `URL Username Password`
+4. In C/C++ section
+  - In General -> Additional Include Directories, add the **jdbc** folder from extracted zip file
+  - In Preprocessor -> Preprocessor Definition, define **STATIC_CONCPP** as one of the macros
+  - In Code Generation -> Runtime Library, select **Multi-threaded DLL (/MD)** 
+5. In Linker section
+  - In General -> Additional Library Directories, add the **vs14** folder from extracted zip file
+  - In Input -> Additional Dependencies, add **mystaticcppcon-static.lib** from the **vs14** folder
