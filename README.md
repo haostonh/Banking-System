@@ -27,7 +27,7 @@
   - In Input -> Additional Dependencies, add **mystaticcppcon-static.lib** from the **vs14** folder
 
 ### Additional Resources:
-  - [Set Up Tutorial]https://www.youtube.com/watch?v=a_W4zt5sR1M&list=LL&index=2&ab_channel=BoostMyTool
-  - [Using Connector/C++]https://dev.mysql.com/doc/dev/connector-cpp/8.0/usage.html
-  - [Building Connector/C++]https://dev.mysql.com/doc/connector-cpp/1.1/en/connector-cpp-apps-windows-visual-studio.html
+  - [Set Up Tutorial] https://www.youtube.com/watch?v=a_W4zt5sR1M&list=LL&index=2&ab_channel=BoostMyTool
+  - [Using Connector/C++] https://dev.mysql.com/doc/dev/connector-cpp/8.0/usage.html
+  - [Building Connector/C++] https://dev.mysql.com/doc/connector-cpp/1.1/en/connector-cpp-apps-windows-visual-studio.html
   - Note: Using Legacy Code with Connector/C++ 1.1 (JDBC)
