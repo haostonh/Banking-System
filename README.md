@@ -34,6 +34,7 @@
 
 ## Goal
 - Use classes to gather information about customers
+- Use regex to validate deposit and withdrawal balances
 - Use Microsoft Visual Studio to build and run solutions
 - Learn how to use MySQL Workbench and write MySQL Syntax
 - Consult the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
